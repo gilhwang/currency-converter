@@ -25,9 +25,6 @@ jobs:
 
         - name: Build project
           run: npm run build
-          env:
-            VITE_EXCHANGE_VERSION: ${{ secrets.VITE_EXCHANGE_VERSION }}
-            VITE_EXCHANGE_DATE: ${{ secrets.VITE_EXCHANGE_DATE }}
 
         - name: Upload production-ready build files
           uses: actions/upload-artifact@v3
