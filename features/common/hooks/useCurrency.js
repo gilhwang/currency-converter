@@ -10,9 +10,9 @@ import { fetchRates, fetchSymbols } from "../../Converter/api/fetchData";
  * @return {state} currencyQuote - second currency country
  */
 function useCurrency() {
-    const [amount, setAmount] = useState(25);
-    const [currencyBase, setCurrencyBase] = useState("krw");
-    const [currencyQuote, setCurrencyQuote] = useState("cad");
+    const [amount, setAmount] = useState(1);
+    const [currencyBase, setCurrencyBase] = useState("cad");
+    const [currencyQuote, setCurrencyQuote] = useState("krw");
 
     // React queries
     const [ratesData, symbolsData] = useQueries({
@@ -20,11 +20,12 @@ function useCurrency() {
             {
                 queryKey: [currencyBase],
                 queryFn: () => fetchRates(currencyBase),
-                staleTime: Infinity
+                staleTime: Infinity,
+                keepPreviousData: true
             },
             {
                 queryKey: [''],
-                queryFn: () => fetchSymbols(),
+                queryFn: fetchSymbols,
                 stateTime: Infinity
             }
         ]
@@ -34,7 +35,7 @@ function useCurrency() {
     const isLoading = [ratesData].some((query) => query.isLoading);
     const isError = [ratesData].some((query) => query.isError);
     const convertedAmount = ratesData.data ? (ratesData.data[currencyBase][currencyQuote] * amount).toFixed(2) : null;
-    const date = ratesData.data ? new Date(ratesData.data?.date) : null;
+    const date = new Date(ratesData.data?.date).toDateString();
     const currencyList = symbolsData.data ? Object.keys(symbolsData.data) : {};
     
     return { 

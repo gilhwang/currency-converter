@@ -6,7 +6,7 @@ function App() {
   return (
     <div>
       <Flex 
-        bgGradient='linear(to-t, #ae085c, #2e0656)'
+        bgGradient='linear(to-t, #93dbaf, #08751a)'
         height='100vh'
         justifyContent='center'
         >
