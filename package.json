@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://gilhwang.github.io/currency-converter/",
+  "homepage": "https://gilhwang.github.io/currency-converter",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
