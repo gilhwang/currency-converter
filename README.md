@@ -1,4 +1,4 @@
-# currency-converter
+# Currency Converter
 A simple javascript project for currency converter using public API
 
 # References
